@@ -1,0 +1,55 @@
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Portal Kulinarny.dll.config
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Portal Kulinarny.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Portal Kulinarny.pdb
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Antlr3.Runtime.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\EntityFramework.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\EntityFramework.SqlServer.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Newtonsoft.Json.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Owin.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.Helpers.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.Mvc.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.Optimization.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.Razor.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.WebPages.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.WebPages.Razor.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\WebGrease.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.Helpers.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.Mvc.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.Optimization.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.Razor.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.WebPages.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\System.Web.WebPages.Razor.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Antlr3.Runtime.pdb
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Newtonsoft.Json.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\EntityFramework.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\EntityFramework.SqlServer.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\obj\Debug\Portal Kulinarny.csprojResolveAssemblyReference.cache
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\obj\Debug\Portal Kulinarny.dll
+C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\obj\Debug\Portal Kulinarny.pdb
