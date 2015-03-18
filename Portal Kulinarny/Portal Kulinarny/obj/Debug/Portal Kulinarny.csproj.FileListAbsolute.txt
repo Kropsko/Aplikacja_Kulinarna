@@ -50,6 +50,5 @@ C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kul
 C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\obj\Debug\Portal Kulinarny.csprojResolveAssemblyReference.cache
 C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\obj\Debug\Portal Kulinarny.dll
 C:\Users\Piotr\Desktop\Projekty na uczelnie\AIWWW\Aplikacja_Kulinarna\Portal Kulinarny\Portal Kulinarny\obj\Debug\Portal Kulinarny.pdb
