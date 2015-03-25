@@ -65,7 +65,7 @@ namespace Portal_Kulinarny.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Nieprawidlowy login lub haslo.");
                 }
             }
 
