@@ -4,18 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Przepisy</h2> <br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj nowy przepis", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AuthorId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.AddDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Content)
@@ -29,10 +32,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.AuthorId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.AddDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Content)
@@ -41,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.Rating)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RecipeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RecipeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RecipeId })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.RecipeId }) |
+            @Html.ActionLink("Szczegoly", "Details", new { id=item.RecipeId }) |
+            @Html.ActionLink("Usun", "Delete", new { id=item.RecipeId })
         </td>
     </tr>
 }
