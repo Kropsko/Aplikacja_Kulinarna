@@ -6,6 +6,6 @@ namespace Portal_Kulinarny.Models
     {
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<FilePath> FilePaths { get; set; }
+        public DbSet<Ingredient> Ingredient { get; set; }
     }
 }

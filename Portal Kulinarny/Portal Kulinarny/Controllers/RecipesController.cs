@@ -7,9 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Portal_Kulinarny.Models;
+using System.IO;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Portal_Kulinarny.Controllers
 {
+    
     public class RecipesController : Controller
     {
         private RecipeContext db = new RecipeContext();
@@ -34,9 +38,9 @@ namespace Portal_Kulinarny.Controllers
             }
             return View(recipe);
         }
- 
-        // GET: Recipes/Create
+
         [Authorize]
+        // GET: Recipes/Create
         public ActionResult Create()
         {
             return View();
@@ -47,16 +51,26 @@ namespace Portal_Kulinarny.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult Create([Bind(Include = "RecipeId,AuthorId,Title,AddDate,Content,Rating")] Recipe recipe)
+        public ActionResult Create([Bind(Include = "RecipeId,AuthorName,Title,AddDate,PreparationTime,Image,Content,AverageGrade")] Recipe recipe, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                recipe.AddDate = DateTime.Today;
+                if((file != null && file.ContentLength > 0 && file.ContentLength < 3000000))
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var uniqueFileName = Guid.NewGuid() + fileName;
+                    var absolutePath = Path.Combine(Server.MapPath("~/Images/"), uniqueFileName);
+                    var relativePath = "~/Images/" + uniqueFileName;
+                    file.SaveAs(absolutePath);
+                    recipe.Image = relativePath;
 
-                db.Recipes.Add(recipe);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    recipe.AddDate = DateTime.Now;
+                    recipe.AuthorName = User.Identity.Name;
+
+                    db.Recipes.Add(recipe);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                 }
             }
 
             return View(recipe);
@@ -82,7 +96,7 @@ namespace Portal_Kulinarny.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RecipeId,AuthorId,Title,AddDate,Content,Rating")] Recipe recipe)
+        public ActionResult Edit([Bind(Include = "RecipeId,AuthorName,Title,AddDate,PreparationTime,Image,Content,AverageGrade")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
