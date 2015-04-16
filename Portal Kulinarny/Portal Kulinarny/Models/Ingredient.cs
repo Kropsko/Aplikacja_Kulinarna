@@ -11,7 +11,7 @@ namespace Portal_Kulinarny.Models
         public int IngredientId { get; set; }
 
         [Display(Name = "Nazwa składnika")]
-        public string Name { get; set; }
+        public string IngredientName { get; set; }
 
         [Display(Name = "ilość")]
         [RegularExpression(@"^\d+[\.\,]{1}\d+|^\d+\/{1}\d+|^\d+\-{1}\d+|^\d+", ErrorMessage = "Niepoprawna ilość, można podać liczbę całkowitą, ułamek zwykły lub dziesiętny")]

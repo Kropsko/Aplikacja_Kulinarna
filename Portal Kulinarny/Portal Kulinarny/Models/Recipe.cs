@@ -27,6 +27,7 @@ namespace Portal_Kulinarny.Models
         [Display(Name = "Zdjęcie")]
         public string Image { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Treść przepisu")]
         public string Content { get; set; }
 
