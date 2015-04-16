@@ -55,22 +55,22 @@ namespace Portal_Kulinarny.Controllers
         {
             if (ModelState.IsValid)
             {
-                if((file != null && file.ContentLength > 0 && file.ContentLength < 3000000))
+                if(file != null )
                 {
                     var fileName = Path.GetFileName(file.FileName);
                     var uniqueFileName = Guid.NewGuid() + fileName;
                     var absolutePath = Path.Combine(Server.MapPath("~/Images/"), uniqueFileName);
                     var relativePath = "~/Images/" + uniqueFileName;
                     file.SaveAs(absolutePath);
-                    recipe.Image = relativePath;
+                    recipe.Image = relativePath;      
+                }
 
-                    recipe.AddDate = DateTime.Now;
-                    recipe.AuthorName = User.Identity.Name;
+                recipe.AddDate = DateTime.Now;
+                recipe.AuthorName = User.Identity.Name;
 
-                    db.Recipes.Add(recipe);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                 }
+                db.Recipes.Add(recipe);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             return View(recipe);
