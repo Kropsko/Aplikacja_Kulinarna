@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations; 
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
-namespace Portal_Kulinarny.Models
+namespace Portal_Kulinarny.Models.ViewModels
 {
-    public class Recipe
+    public class CreateRecipeViewModel
     {
         public int RecipeId { get; set; }
 
@@ -12,7 +15,7 @@ namespace Portal_Kulinarny.Models
         public string AuthorName { get; set; }
 
         [Display(Name = "Nazwa dania")]
-        [Required(ErrorMessage="Nazwa dania jest wymagana")]
+        [Required(ErrorMessage = "Nazwa dania jest wymagana")]
         [MaxLength(50)]
         public string Title { get; set; }
 
@@ -34,10 +37,15 @@ namespace Portal_Kulinarny.Models
         [Display(Name = "Średnia ocen")]
         public double AverageGrade { get; set; }
 
-        [Display(Name = "Lista składników")]
         public virtual List<Ingredient> Ingredients { get; set; }
 
-        [Display(Name = "Komentarze")]
-        public virtual List<Comment> Comments { get; set; }
+        public SelectList UnitNameList { get; set; }
+    }
+
+    public class NewestRecipesViewModel
+    {
+        public int RecipeId { get; set; }
+        public string Title { get; set; }
+        public string Image { get; set; }
     }
 }

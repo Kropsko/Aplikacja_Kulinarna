@@ -9,60 +9,74 @@
     <p>Tu bedzie obrazek :)</p>
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AuthorName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PreparationTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AverageGrade)
-        </th>
-        <th></th>
-    </tr>
+@Html.Partial("_NewestRecipes", Recipes)
 
+@*<div id="NewestRecipes">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PreparationTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AverageGrade)
-            </td>
-            <td>
-                @Html.ActionLink("Szczegóły", "Details", "Recipes", new { id=item.RecipeId }) 
-            </td>
-        </tr>
+        <div class="miniaturkaNr">
+            <h3 class="BestNewestName"> @Html.DisplayFor(modelItem => item.Title)</h3>
+            <a href="@Url.Action("Details", new { id = item.RecipeId })">
+                <img src="@Url.Content(item.Image)" alt="image" width="120" height="120" />
+            </a>
+        </div>
     }
+</div>*@
 
-</table>
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreparationTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AverageGrade)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreparationTime)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.Image)" alt="image" width="120" height="120" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AverageGrade)
+                </td>
+                <td>
+                    @Html.ActionLink("Szczegóły", "Details", "Recipes", new { id=item.RecipeId })
+                </td>
+            </tr>
+        }
+
+    </table>*@

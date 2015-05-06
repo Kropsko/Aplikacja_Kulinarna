@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Portal_Kulinarny.Models.ViewModels.NewestRecipesViewModel>
+
+<div id="NewestRecipes">
+    @foreach (var item in Model)
+    {
+        <div>
+            <h3> @Html.DisplayFor(modelItem => item.Title)</h3>
+            <a href="@Url.Action("Details", new { id = item.RecipeId })">
+                <img src="@Url.Content(item.Image)" alt="image" width="120" height="120" />
+            </a>
+        </div>
+    }
+</div>

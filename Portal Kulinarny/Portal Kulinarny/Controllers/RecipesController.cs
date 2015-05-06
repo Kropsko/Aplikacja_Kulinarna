@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Portal_Kulinarny.Models;
+using Portal_Kulinarny.Models.ViewModels;
 using System.IO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -55,16 +56,19 @@ namespace Portal_Kulinarny.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(file != null )
+                if (file != null && file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
                     var uniqueFileName = Guid.NewGuid() + fileName;
-                    var absolutePath = Path.Combine(Server.MapPath("~/Images/"), uniqueFileName);
-                    var relativePath = "~/Images/" + uniqueFileName;
+                    var absolutePath = Path.Combine(Server.MapPath("~/Images/Uploaded"), uniqueFileName);
+                    var relativePath = "~/Images/Uploaded/" + uniqueFileName;
                     file.SaveAs(absolutePath);
-                    recipe.Image = relativePath;      
+                    recipe.Image = relativePath;
                 }
-
+                else
+                {
+                    recipe.Image = "~/Images/Default/No_Photo.jpg";
+                }
                 recipe.AddDate = DateTime.Now;
                 recipe.AuthorName = User.Identity.Name;
 
@@ -140,6 +144,25 @@ namespace Portal_Kulinarny.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult NewestRecipes()
+        {
+            int count = db.Recipes.Count() > 3 ? 3 : db.Recipes.Count();
+
+            var recipes = (from p in db.Recipes
+                           orderby p.AddDate descending
+                           select p).Take(count).ToList();
+
+            var mv = recipes.Select(u => new NewestRecipesViewModel
+            {
+                RecipeId = u.RecipeId,
+                Title = u.Title,
+                Image = u.Image
+            }).ToList();
+
+            return PartialView("_NewestRecipes", mv);
+
         }
     }
 }
