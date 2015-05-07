@@ -48,4 +48,12 @@ namespace Portal_Kulinarny.Models.ViewModels
         public string Title { get; set; }
         public string Image { get; set; }
     }
+
+    public class BestRatedViewModel
+    {
+        public int RecipeId { get; set; }
+        public string Title { get; set; }
+        public string Image { get; set; }
+        public double AverageGrade { get; set; }
+    }
 }

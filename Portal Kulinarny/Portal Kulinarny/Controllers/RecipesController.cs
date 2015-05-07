@@ -172,11 +172,12 @@ namespace Portal_Kulinarny.Controllers
                            orderby p.AverageGrade descending
                            select p).Take(count).ToList();
 
-            var mv = recipes.Select(u => new NewestRecipesViewModel
+            var mv = recipes.Select(u => new BestRatedViewModel
             {
                 RecipeId = u.RecipeId,
                 Title = u.Title,
-                Image = u.Image
+                Image = u.Image,
+                AverageGrade = u.AverageGrade
             }).ToList();
 
             return PartialView("BestRated", mv);

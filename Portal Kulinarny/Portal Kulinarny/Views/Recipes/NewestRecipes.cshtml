@@ -3,7 +3,7 @@
 <div id="NewestRecipes">
     @foreach (var item in Model)
     {
-        <div>
+        <div class="UnderInfo">
             <h3> @Html.DisplayFor(modelItem => item.Title)</h3>
             <a href="@Url.Action("Details", new { id = item.RecipeId })">
                 <img src="@Url.Content(item.Image)" alt="image" width="120" height="120" />

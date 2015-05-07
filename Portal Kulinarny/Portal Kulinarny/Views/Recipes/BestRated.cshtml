@@ -1,13 +1,14 @@
-﻿@model IEnumerable<Portal_Kulinarny.Models.ViewModels.NewestRecipesViewModel>
+﻿@model IEnumerable<Portal_Kulinarny.Models.ViewModels.BestRatedViewModel>
 
-<div id="NewestRecipes">
+<div id="BestRated">
     @foreach (var item in Model)
     {
-        <div>
+        <div class="UnderInfo">
             <h3> @Html.DisplayFor(modelItem => item.Title)</h3>
             <a href="@Url.Action("Details", new { id = item.RecipeId })">
                 <img src="@Url.Content(item.Image)" alt="image" width="120" height="120" />
             </a>
+            <h2> @Html.DisplayFor(modelItem => item.AverageGrade)</h2>
         </div>
     }
 </div>

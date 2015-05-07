@@ -7,5 +7,10 @@
     <p>Tu bedzie obrazek :)</p>
 </div>
 
-@Html.Action("NewestRecipes", "Recipes")
-@Html.Action("BestRated", "Recipes")
+<h2>Najnowsze przepisy</h2>
+    @Html.Action("NewestRecipes", "Recipes")
+
+<h2>Najwyżej oceniane przepisy</h2>
+    @Html.Action("BestRated", "Recipes")
+
+<link href="~/Content/MainStyles/HomePage.css" rel="stylesheet" />
