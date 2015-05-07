@@ -1,7 +1,4 @@
-﻿@*@model IEnumerable<Portal_Kulinarny.Models.Recipe>*@
-@*@model IEnumerable<Portal_Kulinarny.Models.ViewModels.NewestRecipesViewModel>*@
-
-@{
+﻿@{
     ViewBag.Title = "Strona główna";
 }
 
@@ -11,3 +8,4 @@
 </div>
 
 @Html.Action("NewestRecipes", "Recipes")
+@Html.Action("BestRated", "Recipes")

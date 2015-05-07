@@ -162,7 +162,24 @@ namespace Portal_Kulinarny.Controllers
             }).ToList();
 
             return PartialView("NewestRecipes", mv);
+        }
 
+        public ActionResult BestRated()
+        {
+            int count = db.Recipes.Count() > 3 ? 3 : db.Recipes.Count();
+
+            var recipes = (from p in db.Recipes
+                           orderby p.AverageGrade descending
+                           select p).Take(count).ToList();
+
+            var mv = recipes.Select(u => new NewestRecipesViewModel
+            {
+                RecipeId = u.RecipeId,
+                Title = u.Title,
+                Image = u.Image
+            }).ToList();
+
+            return PartialView("BestRated", mv);
         }
     }
 }
