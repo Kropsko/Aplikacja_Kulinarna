@@ -161,7 +161,7 @@ namespace Portal_Kulinarny.Controllers
                 Image = u.Image
             }).ToList();
 
-            return PartialView("_NewestRecipes", mv);
+            return PartialView("NewestRecipes", mv);
 
         }
     }
