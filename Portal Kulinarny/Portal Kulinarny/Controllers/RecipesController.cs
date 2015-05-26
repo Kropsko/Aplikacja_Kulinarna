@@ -52,8 +52,8 @@ namespace Portal_Kulinarny.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RecipeId,AuthorName,Title,AddDate,PreparationTime,Image,Content,AverageGrade")] Recipe recipe, HttpPostedFileBase file)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create(Recipe recipe, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -100,8 +100,8 @@ namespace Portal_Kulinarny.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RecipeId,AuthorName,Title,AddDate,PreparationTime,Image,Content,AverageGrade")] Recipe recipe)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit( Recipe recipe)
         {
             if (ModelState.IsValid)
             {
@@ -133,6 +133,7 @@ namespace Portal_Kulinarny.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Recipe recipe = db.Recipes.Find(id);
+            db.Ingredients.RemoveRange(recipe.Ingredients);
             db.Recipes.Remove(recipe);
             db.SaveChanges();
             return RedirectToAction("Index");

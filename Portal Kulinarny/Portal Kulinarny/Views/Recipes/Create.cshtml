@@ -1,5 +1,4 @@
-﻿@*@model Portal_Kulinarny.Models.Recipe*@
-@model Portal_Kulinarny.Models.ViewModels.CreateRecipeViewModel
+﻿@model Portal_Kulinarny.Models.ViewModels.CreateRecipeViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -9,9 +8,7 @@
 
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" })) 
-{
-    @Html.AntiForgeryToken()
-    
+{   
     <div class="form-horizontal">
         <h4>Recipe</h4>
         <hr />
@@ -52,12 +49,8 @@
             <label class="control-label col-md-2">Składniki:</label>
         </div>
 
-        @*           Dodawanie składników          *@
         <ul id="IngredientEditor" style="list-style-type: none"></ul>
-
-            <div class="col-md-10">
-                <button id="AddIngredient" class="btn btn-default">Dodaj składnik</button>
-            </div>
+        <button id="AddIngredient" class="btn btn-default">Dodaj składnik</button>
 
         <br />
         <div class="form-group">

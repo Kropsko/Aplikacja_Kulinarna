@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Portal_Kulinarny.Models.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -40,6 +41,10 @@ namespace Portal_Kulinarny.Models.ViewModels
         public virtual List<Ingredient> Ingredients { get; set; }
 
         public SelectList UnitNameList { get; set; }
+        public CreateRecipeViewModel()
+        {
+            UnitNameList = Strings.UnitNameList;
+        }
     }
 
     public class NewestRecipesViewModel
