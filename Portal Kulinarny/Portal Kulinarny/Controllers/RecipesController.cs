@@ -11,6 +11,7 @@ using Portal_Kulinarny.Models.ViewModels;
 using System.IO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Portal_Kulinarny.Models.Constants;
 
 namespace Portal_Kulinarny.Controllers
 {
@@ -182,5 +183,12 @@ namespace Portal_Kulinarny.Controllers
 
             return PartialView("BestRated", mv);
         }
+
+        public ActionResult IngredientEntryRow()
+        {
+            ViewBag.UnitNames = Strings.UnitNameList;
+            return PartialView("IngredientEditor");
+        }
+
     }
 }

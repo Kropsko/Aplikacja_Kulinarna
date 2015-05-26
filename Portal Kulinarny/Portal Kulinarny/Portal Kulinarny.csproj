@@ -264,6 +264,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Recipes\NewestRecipes.cshtml" />
     <Content Include="Views\Recipes\BestRated.cshtml" />
+    <Content Include="Views\Recipes\IngredientEntryRow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

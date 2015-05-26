@@ -58,9 +58,12 @@
             @Html.DisplayFor(modelItem => item.AverageGrade)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RecipeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RecipeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RecipeId })
+            @Html.ActionLink("Szczegóły", "Details", new { id = item.RecipeId }) 
+            @if (item.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins") || User.IsInRole("Editors"))
+            {
+                <span>|</span> @Html.ActionLink("Edytuj", "Edit", new { id = item.RecipeId }) <span>|</span>
+                @Html.ActionLink("Usuń", "Delete", new { id = item.RecipeId })
+            }
         </td>
     </tr>
 }
