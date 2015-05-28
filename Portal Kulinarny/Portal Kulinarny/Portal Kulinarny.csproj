@@ -270,6 +270,8 @@
     <Content Include="Views\Recipes\BestRated.cshtml" />
     <Content Include="Views\Recipes\IngredientEditor.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
+    <Content Include="Views\Recipes\Search.cshtml" />
+    <Content Include="Views\Recipes\UserRecipes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -191,5 +191,24 @@ namespace Portal_Kulinarny.Controllers
             return PartialView("IngredientEditor");
         }
 
+        public ActionResult Search(string search)
+        {
+            var recipes =
+                db.Recipes.Where(
+                    a =>
+                        a.Title.ToLower().Contains(search.ToLower()) ||
+                        a.Ingredients.Any(
+                            ingred => ingred.IngredientName.ToLower().Contains(search.ToLower()))).ToList();
+
+            return View(recipes);
+        }
+
+        public ActionResult UserRecipes()
+        {
+            var userRecipes = db.Recipes.Where(a => a.AuthorName == User.Identity.Name).ToList();
+
+            return View(userRecipes);
+        }
+
     }
 }
