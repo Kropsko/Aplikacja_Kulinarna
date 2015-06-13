@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations; 
+using System.ComponentModel.DataAnnotations;
+using DataAnnotationsExtensions;
 
 namespace Portal_Kulinarny.Models
 {
@@ -21,6 +22,7 @@ namespace Portal_Kulinarny.Models
 
         [Required(ErrorMessage = "Czas przygotowania jest wymagany")]
         [Range(1, 960, ErrorMessage = "Niepoprawny czas przygotowania")]
+        [Numeric(ErrorMessage="Czas musi być liczbą")]
         [Display(Name = "Czas przygotowania")]
         public int PreparationTime { get; set; }
 
@@ -39,5 +41,7 @@ namespace Portal_Kulinarny.Models
 
         [Display(Name = "Komentarze")]
         public virtual List<Comment> Comments { get; set; }
+
+        public string Votes { get; set; }
     }
 }

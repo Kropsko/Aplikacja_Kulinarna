@@ -8,3 +8,5 @@
 /// <reference path="respond.min.js" />
 /// <reference path="respond.matchmedia.addlistener.min.js" />
 /// <reference path="aplikacjakulinarna/addnewingredient.js" />
+/// <reference path="aplikacjakulinarna/addvote.js" />
+/// <reference path="aplikacjakulinarna/checkingredient.js" />

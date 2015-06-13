@@ -1,14 +1,10 @@
 ﻿@model IEnumerable<Portal_Kulinarny.Models.Recipe>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
+<h3>Lista twoich przepisów</h3>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    @Html.ActionLink("Stwórz nowy przepis!", "Create")
+</p><br />
 <table class="table">
     <tr>
         <th>
@@ -62,7 +58,7 @@
                 @Html.ActionLink("Szczegóły", "Details", new { id = item.RecipeId }) <span>|</span> 
                 @Html.ActionLink("Edytuj", "Edit", new { id = item.RecipeId }) <span>|</span>
                 @Html.ActionLink("Usuń", "Delete", new { id = item.RecipeId })
-                }
+                
             </td>
         </tr>
     }

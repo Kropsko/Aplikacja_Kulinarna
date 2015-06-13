@@ -1,18 +1,14 @@
 ﻿@model Portal_Kulinarny.Models.ViewModels.CreateRecipeViewModel
 
-@{
-    ViewBag.Title = "Create";
-}
+<h3>Tworzenie nowego przepisu</h3>
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" })) 
-{   
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     <div class="form-horizontal">
-        <h4>Recipe</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -32,7 +28,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">          
+            <div class="col-md-10">
                 <input type="file" name="file" accept="image/jpeg, image/png">
             </div>
         </div>
@@ -48,11 +44,19 @@
         <div class="form-group">
             <label class="control-label col-md-2">Składniki:</label>
         </div>
+        
+        <div class="col-md-offset-1 ">
+            <span id="validationJS" class="text-danger"></span>
+            <ul id="IngredientEditor" style="list-style-type: none"></ul>
+        </div>
 
-        <ul id="IngredientEditor" style="list-style-type: none"></ul>
-        <button id="AddIngredient" class="btn btn-default">Dodaj składnik</button>
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-2">
+                <button id="AddIngredient" class="btn btn-default">Dodaj składnik</button>
+            </div>
+        </div>
 
-        <br />
+        <br /><br />
         <div class="form-group">
             <div class="col-md-offset-1 col-md-2">
                 <input type="submit" value="Dodaj przepis" class="btn btn-default" />
@@ -62,11 +66,15 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<div class="form-group">
+    <div class="col-md-offset-1 col-md-2">
+        @Html.ActionLink("Wróć", "Index")
+    </div>
+</div><br />
+    
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Scripts/AplikacjaKulinarna/AddNewIngredient.js")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/Scripts/AplikacjaKulinarna/AddNewIngredient.js")
+        @Scripts.Render("~/Scripts/AplikacjaKulinarna/CheckIngredient.js")
+    }

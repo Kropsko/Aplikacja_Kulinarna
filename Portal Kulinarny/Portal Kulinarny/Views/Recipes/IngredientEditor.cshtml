@@ -10,7 +10,8 @@
     @using (Html.BeginCollectionItem("Ingredients"))
     {
         @Html.AntiForgeryToken()
-        
+    
+
         <span class="ingEditorItemName">@Html.LabelFor(model => model.Quantity)</span>
         @Html.TextBoxFor(model => model.Quantity, new { maxlength = "4", size = "4" })
         @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })

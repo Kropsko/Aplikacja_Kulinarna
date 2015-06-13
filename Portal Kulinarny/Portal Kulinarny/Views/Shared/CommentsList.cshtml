@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Portal_Kulinarny.Models.Comment>
+
+@if (!Model.Any())
+{ 
+    <p> Brak komentarzy.</p>
+}
+else
+{
+    <table class="table" id="CommentsTable">
+        <tr>
+            <th style="width: 150px">
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="CommentList" style="text-align: center; width: 100px">
+                        @Html.DisplayFor(modelItem => item.AuthorName)
+                    </div>
+                </td>
+                <td>
+                    <p class="recipe_p_field">@Html.DisplayFor(modelItem => item.Content)<p>
+                        @if (item.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins") || User.IsInRole("Editors"))
+                        {
+                            <span>@Ajax.ActionLink("Usuń komentarz", "Delete", "Comments", new { id = item.CommentId }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "CommentsList", OnComplete = "clearContent()" })</span>
+                        }
+                </td>
+            </tr>
+        }   
+    </table>
+}

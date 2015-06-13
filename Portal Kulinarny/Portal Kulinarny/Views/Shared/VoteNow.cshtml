@@ -1,0 +1,16 @@
+﻿@model string
+@{
+    var url = Request.Url.AbsolutePath;
+}
+
+@if (Request.Cookies[url + User.Identity.Name] == null)
+{
+    <div id="ratingDiv">
+        <div class="stars"> <img src="/Images/Default/Disactive_Star.gif" alt="" class="ratingStar" data-value="1" /><img src="/Images/Default/Disactive_Star.gif" alt="" class="ratingStar" data-value="2" /><img src="/Images/Default/Disactive_Star.gif" alt="" class="ratingStar" data-value="3" /><img src="/Images/Default/Disactive_Star.gif" alt="" class="ratingStar" data-value="4" /><img src="/Images/Default/Disactive_Star.gif" alt="" class="ratingStar" data-value="5" /> </div>
+    </div>
+    <div class="rateWord" data-url="@url" data-model="@Model"></div>
+}
+else
+{
+    <text><span id="thx" style="color:green;">Oceniłeś już tę potrawę!</span></text>
+}

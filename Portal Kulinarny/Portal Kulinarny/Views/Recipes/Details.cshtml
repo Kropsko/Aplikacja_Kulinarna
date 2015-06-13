@@ -1,16 +1,10 @@
-﻿@model Portal_Kulinarny.Models.Recipe
-
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
+﻿@using System.Globalization
+@model Portal_Kulinarny.Models.Recipe
 
 <div>
-    <h4>Recipe</h4>
     <hr />
 
-    @Html.DisplayFor(model => model.Title) <br /><br />
+    <h3>@Html.DisplayFor(model => model.Title)</h3> <br /><br />
 
     <img src="@Url.Content(Model.Image)" alt="image" width="120" height="120" /> <br /><br />
 
@@ -35,9 +29,19 @@
     <ul>
         @foreach (var ingred in Model.Ingredients)
         {
-            <li> @ingred.Quantity @Html.Action("ValidWordForm", new { unitName = ingred.Unit, quantity = ingred.Quantity }) @ingred.IngredientName</li>
+            <li> @ingred.IngredientName @ingred.Quantity @Html.Action("ValidWordForm", new { unitName = ingred.Unit, quantity = ingred.Quantity }) </li>
         }
     </ul>
+</div>
+
+@*<div class="VoteSystem">
+    <div class="td0">Oceń potrawę</div>
+    <div id="Now" class="td">@Html.Partial("VoteNow", Model.RecipeId.ToString(CultureInfo.InvariantCulture))</div>
+    <div id="Show" class="td">@Html.Partial("VoteShow", Model.Votes, new ViewDataDictionary { { "id", Model.RecipeId } })</div>
+</div>*@
+
+<div class="CommentSystem">
+    @Html.Partial("Comments", Model.Comments, new ViewDataDictionary { { "id", Model.RecipeId } })
 </div>
 
 <p>

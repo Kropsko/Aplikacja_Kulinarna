@@ -135,6 +135,7 @@ namespace Portal_Kulinarny.Controllers
         {
             Recipe recipe = db.Recipes.Find(id);
             db.Ingredients.RemoveRange(recipe.Ingredients);
+            db.Comments.RemoveRange(recipe.Comments);
             db.Recipes.Remove(recipe);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -194,12 +195,14 @@ namespace Portal_Kulinarny.Controllers
 
         public ActionResult Search(string search)
         {
-            var recipes =
+             var recipes =
                 db.Recipes.Where(
                     a =>
                         a.Title.ToLower().Contains(search.ToLower()) ||
+                        a.PreparationTime.ToString().Equals(search.ToString()) ||
                         a.Ingredients.Any(
                             ingred => ingred.IngredientName.ToLower().Contains(search.ToLower()))).ToList();
+                
 
             return View(recipes);
         }
@@ -388,6 +391,73 @@ namespace Portal_Kulinarny.Controllers
                 }
             }
             return "minuta";
+        }
+
+        public string CountVotes(string votesString, string id)
+        {
+            var idNum = Convert.ToInt32(id);
+            var recipe = db.Recipes.Find(idNum);
+
+            Single mTotalNumberOfVotes = 0;
+            Single mTotalVoteCount = 0;
+
+            string[] votes = votesString.Split(',');
+            for (int i = 0; i < votes.Length; i++)
+            {
+                Single mCurrentVotesCount = int.Parse(votes[i]);
+                mTotalNumberOfVotes = mTotalNumberOfVotes + mCurrentVotesCount;
+                mTotalVoteCount = mTotalVoteCount + (mCurrentVotesCount * (i + 1));
+            }
+
+            float mAverage = mTotalVoteCount / mTotalNumberOfVotes;
+            float mInPercent = (mAverage * 100) / 5;
+
+            recipe.AverageGrade = mAverage;
+            db.SaveChanges();
+
+            return
+                "<span style=\"display: block; width: 70px; height: 13px; background: url(/Images/Default/Disactive_Star.gif) 0 0;\">" +
+                "<span style=\"display: block; width: " + mInPercent +
+                "%; height: 13px; background: url(/Images/Default/Active_Star.gif) 0 -13px;\"></span> " +
+                "</span>" +
+                "<span class=\"smallText\">Ilość głosów: <span itemprop=\"ratingCount\">" + mTotalNumberOfVotes +
+                "</span> | Średnia ocen : <span itemprop=\"ratingValue\">" + mAverage.ToString("##.##") +
+                "</span> na 5 </span>  ";
+        }
+
+        public JsonResult CountVotesFromId(string id)
+        {
+            var idNum = Convert.ToInt32(id);
+            var recipe = db.Recipes.Find(idNum);
+            var votesString = recipe.Votes;
+            Single mTotalNumberOfVotes = 0;
+            Single mTotalVoteCount = 0;
+
+     
+            string[] votes = votesString.Split(',');
+            for (int i = 0; i < votes.Length; i++)
+            {
+                Single mCurrentVotesCount = int.Parse(votes[i]);
+                mTotalNumberOfVotes = mTotalNumberOfVotes + mCurrentVotesCount;
+                mTotalVoteCount = mTotalVoteCount + (mCurrentVotesCount * (i + 1));
+            }
+
+            float mAverage = mTotalVoteCount / mTotalNumberOfVotes;
+            float mInPercent = (mAverage * 100) / 5;
+
+            recipe.AverageGrade = mAverage;
+            db.SaveChanges();
+
+            return
+                Json(
+                    "<span style=\"display: block; width: 70px; height: 13px; background: url(/Images/Default/DisactiveStar.gif) 0 0;\">" +
+                    "<span style=\"display: block; width: " + mInPercent +
+                    "%; height: 13px; background: url(/Images/Default/ActiveStar.gif) 0 -13px;\"></span> " +
+                    "</span>" +
+                    "<span class=\"smallText\">Ilość głosów: <span itemprop=\"ratingCount\">" + mTotalNumberOfVotes +
+                    "</span> | Średnia ocen : <span itemprop=\"ratingValue\">" + mAverage.ToString("##.##") +
+                    "</span> na 5 </span>  ");
+
         }
 
     }

@@ -10,7 +10,6 @@ namespace Portal_Kulinarny.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "Portal_Kulinarny.Models.RecipeContext";
         }
 
         protected override void Seed(Portal_Kulinarny.Models.RecipeContext context)

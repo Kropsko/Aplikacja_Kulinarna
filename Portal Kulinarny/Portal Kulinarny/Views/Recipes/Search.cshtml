@@ -1,7 +1,12 @@
-﻿
-@{
-    ViewBag.Title = "Search";
+﻿@model IEnumerable<Portal_Kulinarny.Models.Recipe>
+
+<h1 class="title">Wyniki wyszukiwania</h1>
+<br />
+@if (!Model.Any())
+{
+    <p> Nie znaleziono przepisów spełniających podane kryteria</p>
 }
-
-<h2>Search</h2>
-
+else
+{
+    @Html.Partial("RecipeList", Model)
+}
