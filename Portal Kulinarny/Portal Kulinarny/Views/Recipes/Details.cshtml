@@ -34,20 +34,30 @@
     </ul>
 </div>
 
+<br />
 @*<div class="VoteSystem">
     <div class="td0">Oceń potrawę</div>
     <div id="Now" class="td">@Html.Partial("VoteNow", Model.RecipeId.ToString(CultureInfo.InvariantCulture))</div>
     <div id="Show" class="td">@Html.Partial("VoteShow", Model.Votes, new ViewDataDictionary { { "id", Model.RecipeId } })</div>
 </div>*@
 
-<div class="CommentSystem">
-    @Html.Partial("Comments", Model.Comments, new ViewDataDictionary { { "id", Model.RecipeId } })
-</div>
+<br />
+
+    <div class="CommentSystem">
+        @Html.Partial("Comments", Model.Comments, new ViewDataDictionary { { "id", Model.RecipeId } })
+    </div>  
 
 <p>
-@if (Model.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins") || User.IsInRole("Editors"))
+@if (Model.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins"))
 {
     @Html.ActionLink("Edytuj", "Edit", new { id = Model.RecipeId }) <span>|</span>
 }
     @Html.ActionLink("Wróć do listy", "Index")
 </p>
+
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/AplikacjaKulinarna/AddVote.js")    
+    @Scripts.Render("~/Scripts/AplikacjaKulinarna/AjaxComments.js")
+    @Scripts.Render("~/bundles/jqueryval")
+}

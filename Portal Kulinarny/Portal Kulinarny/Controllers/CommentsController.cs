@@ -33,7 +33,6 @@ namespace Portal_Kulinarny.Controllers
             return RedirectToAction("Details", "Recipes", new { id = recipeId });
         }
 
-        //[CommentOnlyOwnerOrAdminOrEditors]
         public ActionResult Delete(int id)
         {
             var comment = db.Comments.Single(p => p.CommentId == id);           

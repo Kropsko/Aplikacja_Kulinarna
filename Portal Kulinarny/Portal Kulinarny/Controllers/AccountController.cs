@@ -11,6 +11,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using Portal_Kulinarny.Models;
+using System.Web.Mail;
+using System.Net.Mail;
+using System.Net;
 
 namespace Portal_Kulinarny.Controllers
 {
@@ -466,6 +469,89 @@ namespace Portal_Kulinarny.Controllers
             base.Dispose(disposing);
         }
 
+        /* dodane */
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+
+        //    var user = await UserManager.FindAsync(model.Email, model.Password);
+        //    if (user != null)
+        //    {
+        //        if (user.EmailConfirmed)
+        //        {
+        //            await SignInAsync(user, model.RememberMe);
+        //            return RedirectToLocal(returnUrl);
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "Konto nie zostało aktywowane!");
+        //            return View(model);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        ModelState.AddModelError("", "Nieprawidłowy login lub hasło.");
+        //    }
+        //    return View(model);
+        //}
+
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Register(RegisterViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+        //        var result = await UserManager.CreateAsync(user, model.Password);
+        //        if (result.Succeeded)
+        //        {
+        //            // await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+        //            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+        //            // Send an email with this link
+        //            //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+        //            //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        //            //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+        //            //return RedirectToAction("Index", "Home");
+
+        //            string code = UserManager.GenerateEmailConfirmationToken(user.Id);
+        //            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, Request.Url.Scheme);
+
+        //            try
+        //            {
+        //                SendEmail(user.Email, callbackUrl,
+        //                    "Aktywacja konta - baza noclegów",
+        //                    "Proszę potwierdzić adres e-mail kilkając <a " + "href=\"{0}\">TU</a>");
+        //                return View("EmailConfirmation");
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                ModelState.AddModelError("", e.Message);
+        //            }
+        //        }
+        //        AddErrors(result);
+        //    }
+        //    return View(model);
+        //}
+
+        //private void SendEmail(string email, string callbackUrl, string subject, string message)
+        //{
+        //    MailMessage m = new MailMessage("lukasz_rakowski@interia.pl", email, subject, string.Format(message, callbackUrl));
+        //    SmtpClient sc = new SmtpClient("poczta.interia.pl", 587);
+        //    sc.Credentials = new NetworkCredential("lukasz_rakowski@interia.pl", Password);
+        //    sc.EnableSsl = true;
+        //    sc.Send(m);
+        //}
+        /* koniec dodania*/
+
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
@@ -500,11 +586,6 @@ namespace Portal_Kulinarny.Controllers
                 return user.PasswordHash != null;
             }
             return false;
-        }
-
-        private void SendEmail(string email, string callbackUrl, string subject, string message)
-        {
-            // For information on sending mail, please visit http://go.microsoft.com/fwlink/?LinkID=320771
         }
 
         public enum ManageMessageId

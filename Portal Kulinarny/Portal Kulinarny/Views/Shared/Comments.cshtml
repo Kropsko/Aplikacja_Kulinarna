@@ -2,7 +2,14 @@
 
 <div id="CommentsList">@Html.Partial("CommentsList", Model)</div>
 
-@using (Ajax.BeginForm("Create", "Comments", new AjaxOptions { UpdateTargetId = "CommentsList", OnComplete = "clearContent()" }))
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <text><a href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath" title="Zaloguj się">Zaloguj się </a>, aby dodwać komentarze</text>
+    <br />
+    return;
+}
+@using (Ajax.BeginForm("Create", "Comments", new AjaxOptions { UpdateTargetId = "CommentsList", OnComplete = "clearContent()"  }))
 {
     <div style="padding:5px">
         <div class="editor-field">

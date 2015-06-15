@@ -26,7 +26,7 @@ else
                 </td>
                 <td>
                     <p class="recipe_p_field">@Html.DisplayFor(modelItem => item.Content)<p>
-                        @if (item.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins") || User.IsInRole("Editors"))
+                        @if (item.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins"))
                         {
                             <span>@Ajax.ActionLink("Usuń komentarz", "Delete", "Comments", new { id = item.CommentId }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "CommentsList", OnComplete = "clearContent()" })</span>
                         }

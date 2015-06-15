@@ -202,7 +202,6 @@ namespace Portal_Kulinarny.Controllers
                         a.PreparationTime.ToString().Equals(search.ToString()) ||
                         a.Ingredients.Any(
                             ingred => ingred.IngredientName.ToLower().Contains(search.ToLower()))).ToList();
-                
 
             return View(recipes);
         }

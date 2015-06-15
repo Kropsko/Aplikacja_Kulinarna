@@ -225,6 +225,7 @@
     <Content Include="Images\Default\No_Photo.jpg" />
     <Content Include="Scripts\AplikacjaKulinarna\AddNewIngredient.js" />
     <Content Include="Scripts\AplikacjaKulinarna\AddVote.js" />
+    <Content Include="Scripts\AplikacjaKulinarna\AjaxComments.js" />
     <Content Include="Scripts\AplikacjaKulinarna\CheckIngredient.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
