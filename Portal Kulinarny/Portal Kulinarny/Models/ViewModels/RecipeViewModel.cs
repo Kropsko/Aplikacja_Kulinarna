@@ -17,7 +17,7 @@ namespace Portal_Kulinarny.Models.ViewModels
 
         [Display(Name = "Nazwa dania")]
         [Required(ErrorMessage = "Nazwa dania jest wymagana")]
-        [MaxLength(50)]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Nazwa musi mieć, przynajmniej 2 znaki i maksymalnie 50 znaków")]
         public string Title { get; set; }
 
         [Display(Name = "Data dodania")]

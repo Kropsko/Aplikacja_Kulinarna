@@ -2,94 +2,95 @@
 @model Portal_Kulinarny.Models.ViewModels.RecipeEditViewModels
 
 <br />
-<h1 class="title">Edycja przepisu</h1>
+<h3 class="title text-center"><b>Edycja przepisu</b></h3>
+<hr />
+<div class="inMiddleEdit">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.RecipeId)
+        <div class="form-horizontal ">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.RecipeId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PreparationTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PreparationTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PreparationTime, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.PreparationTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PreparationTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PreparationTime, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Image)
-        </div>
-        @if (Model.Image == "~/Images/Default/No_Photo.jpg")
-        {
-            <input type="file" name="file" accept="image/jpeg,image/png">
-            <br>
-        }
-        else
-        {<img src="@Url.Content(Model.Image)" alt="image" width="150" height="150" />
-            @Html.ActionLink("Usuń bieżące zdjęcie", "DeleteImage", new { id = Model.RecipeId })
-            <br><br>
-        }
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Ingredients)
-        </div>
-        <br>
-        <span id="validationJS" class="text-danger"></span>
-        <ul id="IngredientEditor" style="list-style-type: none">
-            @if (Model.Ingredients != null)
-            {
-                foreach (var ingre in Model.Ingredients)
+            <br />
+            <div class="toRightEdit">
+                @if (Model.Image == "~/Images/Default/No_Photo.jpg")
                 {
-                    Html.RenderPartial("IngredientEditor", ingre, new ViewDataDictionary { { "UnitNames", Model.UnitNameList } });
+                    <input type="file" name="file" accept="image/jpeg,image/png">
+                    <br>
                 }
-            }
-        </ul>
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-2">
-                <button id="AddIngredient" class="btn btn-default">Dodaj składnik</button>
+                else
+                {<img src="@Url.Content(Model.Image)" alt="image" width="150" height="150" />
+                    @Html.ActionLink("Usuń bieżące zdjęcie", "DeleteImage", new { id = Model.RecipeId })
+                    <br><br>
+                }
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            <div class="editor-label toRightEdit2">
+                @Html.LabelFor(model => model.Ingredients)
             </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AverageGrade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AverageGrade, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AverageGrade, "", new { @class = "text-danger" })
+            <br>
+            <span id="validationJS" class="text-danger"></span>
+            <ul id="IngredientEditor" style="list-style-type: none">
+                @if (Model.Ingredients != null)
+                {
+                    foreach (var ingre in Model.Ingredients)
+                    {
+                        Html.RenderPartial("IngredientEditor", ingre, new ViewDataDictionary { { "UnitNames", Model.UnitNameList } });
+                    }
+                }
+            </ul>
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-2">
+                    <button id="AddIngredient" class="btn btn-default">Dodaj składnik</button>
+                </div>
             </div>
-        </div>
 
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Zapisz" class="btn btn-default" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-    </div>
-}
 
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AverageGrade, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AverageGrade, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AverageGrade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Zapisz" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
 <div>
     @Html.ActionLink("Wróć do listy", "Index")
 </div>

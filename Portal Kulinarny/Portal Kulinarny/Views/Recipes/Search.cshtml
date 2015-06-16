@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Portal_Kulinarny.Models.Recipe>
 
-<h1 class="title">Wyniki wyszukiwania</h1>
-<br />
+<h3 class="title text-center"><b>Wyniki wyszukiwania</b></h3>
+<hr />
 @if (!Model.Any())
 {
-    <p> Nie znaleziono przepisów spełniających podane kryteria</p>
+    <p class="text-center"> Nie znaleziono przepisów spełniających podane kryteria</p>
 }
 else
 {

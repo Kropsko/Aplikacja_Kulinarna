@@ -7,10 +7,16 @@
     <p>Tu bedzie obrazek :)</p>
 </div>
 
-<h2>Najnowsze przepisy</h2>
+
+<div class="inMiddle" >
+    <h2 class="textMiddle"><b>Najnowsze przepisy</b></h2>
+    <hr />
     @Html.Action("NewestRecipes", "Recipes")
 
-<h2>Najwyżej oceniane przepisy</h2>
+
+    <h2 class="textMiddle"><b>Najwyżej oceniane przepisy</b></h2>
+    <hr />
     @Html.Action("BestRated", "Recipes")
+</div>
 
 <link href="~/Content/MainStyles/HomePage.css" rel="stylesheet" />

@@ -10,9 +10,9 @@ namespace Portal_Kulinarny
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        //"~/Scripts/jquery.unobtrusive-ajax.min.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js",
                         //"~/Scripts/jquery-1.7.1.min.js"
-                       // "~/Scripts/jquery-1.9.1.min.js"
+                        //"~/Scripts/jquery-1.9.1.min.js"
                         "~/Scripts/jquery-2.1.3.js"
                         ));
 
@@ -30,6 +30,7 @@ namespace Portal_Kulinarny
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/Recipes.css",
                       "~/Content/site.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,

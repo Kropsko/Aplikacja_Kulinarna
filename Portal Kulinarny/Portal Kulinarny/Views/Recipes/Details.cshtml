@@ -1,47 +1,50 @@
 ﻿@using System.Globalization
 @model Portal_Kulinarny.Models.Recipe
 
-<div>
-    <hr />
 
-    <h3>@Html.DisplayFor(model => model.Title)</h3> <br /><br />
+<h3 class="text-center" ><b>@Html.DisplayFor(model => model.Title)</b></h3>
+<hr />
 
-    <img src="@Url.Content(Model.Image)" alt="image" width="120" height="120" /> <br /><br />
+<div class="inMiddleDetails">
+    <div>
 
-    @Html.DisplayNameFor(model => model.AuthorName): <span> </span>
-    @Html.DisplayFor(model => model.AuthorName) <br /><br />
+        <img src="@Url.Content(Model.Image)" alt="image" width="240" height="240" /> <br /><br />
 
-    @Html.DisplayNameFor(model => model.AddDate): <span> </span>
-    @Html.DisplayFor(model => model.AddDate) <br /><br />
+        <b>@Html.DisplayNameFor(model => model.AuthorName): <span> </span></b>
+        @Html.DisplayFor(model => model.AuthorName) <br /><br />
 
-    @Html.DisplayNameFor(model => model.PreparationTime): <span> </span>
-    @Html.DisplayFor(model => model.PreparationTime)
-    @Html.Action("ValidMinutesForm", new { minutes = Model.PreparationTime }).ToString() <br /><br />
+        <b>@Html.DisplayNameFor(model => model.AddDate): <span> </span></b>
+        @Html.DisplayFor(model => model.AddDate) <br /><br />
 
-    Treść przepisu:<br />
-    @Html.DisplayFor(model => model.Content) <br /><br />
+        <b>@Html.DisplayNameFor(model => model.PreparationTime): <span> </span></b>
+        @Html.DisplayFor(model => model.PreparationTime)
+        @Html.Action("ValidMinutesForm", new { minutes = Model.PreparationTime }).ToString() <br /><br />
 
-    Oceny: <span> </span>
+        <b>Treść przepisu:</b><br />
+        @Html.DisplayFor(model => model.Content)
+        <br />
+        <br />
+
+        <b>Składniki (@Model.Ingredients.Count): </b><br />
+
+        <ul>
+            @foreach (var ingred in Model.Ingredients)
+            {
+                <li> @ingred.IngredientName @ingred.Quantity @Html.Action("ValidWordForm", new { unitName = ingred.Unit, quantity = ingred.Quantity }) </li>
+            }
+        </ul>
+    </div>
+
+    <br />
+    <b>Ocena potrawy: <span> </span></b>
     @Html.DisplayFor(model => model.AverageGrade)<br /><br />
-
-    Składniki (@Model.Ingredients.Count): <br />
-            
-    <ul>
-        @foreach (var ingred in Model.Ingredients)
-        {
-            <li> @ingred.IngredientName @ingred.Quantity @Html.Action("ValidWordForm", new { unitName = ingred.Unit, quantity = ingred.Quantity }) </li>
-        }
-    </ul>
-</div>
-
-<br />
-
-<br />
+    <br />
 
     <div class="CommentSystem">
         @Html.Partial("Comments", Model.Comments, new ViewDataDictionary { { "id", Model.RecipeId } })
-    </div>  
+    </div>
 
+</div>
 <p>
 @if (Model.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins"))
 {
@@ -55,3 +58,4 @@
     @Scripts.Render("~/Scripts/AplikacjaKulinarna/AjaxComments.js")
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script src="~/Scripts/jquery-2.1.3.js"></script>

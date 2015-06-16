@@ -1,15 +1,15 @@
 ﻿@model Portal_Kulinarny.Models.Recipe
 <br />
-<h3>Czy napewno chce usunąć ten przepis?</h3>
+<h3 class="text-center"><b>Czy napewno chce usunąć ten przepis?</b></h3>
 
  <br />
-<div>
+<div class="inMiddle">
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Usuń" class="btn btn-default" /> |
-            @Html.ActionLink("Wróć do listy", "Index")
-        </div>
+    <div class="form-actions no-color text-center">
+        <input type="submit" value="Usuń" class="btn btn-default " /> |
+        @Html.ActionLink("Wróć do listy", "Index")
+    </div>
     }
 </div>

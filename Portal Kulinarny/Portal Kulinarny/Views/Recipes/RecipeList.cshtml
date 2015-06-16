@@ -1,68 +1,38 @@
 ﻿@model IEnumerable<Portal_Kulinarny.Models.Recipe>
 
-<br />
+@foreach (var item in Model)
+{
+    <div class="miniature">
+        <div id="photoIndex">
+            <a href="@Url.Action("Details", new { id = item.RecipeId})">
+                <img src="@Url.Content(item.Image)" alt="image" width="150" height="150" />
+            </a>
+        </div>
+        <div class="RecipeTitle">
+            <b>@Html.DisplayFor(modelItem => item.Title)</b>
+        </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AuthorName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PreparationTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AverageGrade)
-        </th>
-        <th></th>
-    </tr>
+        <div id="ShortInfo">
+            <label><b>Autor: </b></label> @Html.DisplayFor(modelItem => item.AuthorName)
+            <br />
+            <label><b>Czas przygotowania: </b></label> @Html.DisplayFor(modelItem => item.PreparationTime) @Html.Action("ValidMinutesForm", new { minutes = item.PreparationTime }).ToString()
+            <br />
+            <label><b>Ocena : </b></label> @Html.DisplayFor(modelItem => item.AverageGrade)
+        </div>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PreparationTime)
-            </td>
-            <td>
-                <img src="@Url.Content(item.Image)" alt="image" width="120" height="120" />
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AverageGrade)
-            </td>
-            <td>
-                @Html.ActionLink("Szczegóły", "Details", new { id = item.RecipeId })
-                @if (item.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins") || User.IsInRole("Editors"))
-                {
-                    <span>|</span> @Html.ActionLink("Edytuj", "Edit", new { id = item.RecipeId }) <span>|</span>
-                    @Html.ActionLink("Usuń", "Delete", new { id = item.RecipeId })
-                }
-            </td>
-        </tr>
-    }
+        <div id="ChoseButtons">
+            @Html.ActionLink("Szczegóły", "Details", new { id = item.RecipeId })
+            @if (item.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins"))
+            {
+                <span>|</span> @Html.ActionLink("Edytuj", "Edit", new { id = item.RecipeId }) <span>|</span>
+                @Html.ActionLink("Usuń", "Delete", new { id = item.RecipeId })
+            }
+        </div>
+    </div>
+    <div id="DivCleaner">
 
-</table>
+    </div>
+
+    <br />
+    <br />
+}

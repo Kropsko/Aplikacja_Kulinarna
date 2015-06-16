@@ -1,0 +1,82 @@
+﻿body {
+}
+
+.miniature {
+    height: 200px;
+    width: 500px;
+    background-color:#f2f2f2;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.inMiddle {
+    width: 940px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.middlePhoto {
+
+}
+
+
+.toRightEdit {
+    margin-left:120px;
+}
+
+.toRightEdit2 {
+    margin-left:60px;
+}
+
+.inMiddleCreate {
+    width: 70%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.inMiddleEdit {
+    width: 60%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.inMiddleDetails {
+    width: 30%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.textMiddle {
+    text-align:center;
+}
+.search {
+    padding-top:8px;
+    margin-left:10px;
+}
+
+#photoIndex {
+    float: left;
+}
+
+#ShortInfo {
+    margin-left:160px;
+}
+
+.RecipeTitle {
+    height:80px;
+    text-align:center;
+    font-size:25px;
+}
+
+#ChoseButtons {
+    margin-top:5px;
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align:center;
+    vertical-align:text-bottom;
+    background-color:#d1d1d1;
+}
+
+#DivCleaner {
+    margin-bottom:10px;
+}
