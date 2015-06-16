@@ -13,5 +13,10 @@ namespace Portal_Kulinarny.Models.Constants
                     "sztuka", "gram", "dekagram", "kilogram", "mililitr", "litr", "opakowanie","kostka", "plaster", "szklanka",
                     "łyżka", "łyżeczka","ząbek","kropla", "szczypta"
                 });
+
+        public static SelectList VoteScoresList = new SelectList(new[]
+        {
+            1,2,3,4,5
+        });
     }
 }

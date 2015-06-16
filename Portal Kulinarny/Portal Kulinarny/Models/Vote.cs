@@ -11,6 +11,5 @@ namespace Portal_Kulinarny.Models
         public int VoteForID { get; set; }
         public string UserName { get; set; }
         public int VoteScore { get; set; }
-        public bool IsActive { get; set; }
     }
 }

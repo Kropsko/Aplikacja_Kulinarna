@@ -34,7 +34,7 @@ namespace Portal_Kulinarny.Models
         public string Content { get; set; }
 
         [Display(Name = "Średnia ocen")]
-        public double AverageGrade { get; set; }
+        public float AverageGrade { get; set; }
 
         [Display(Name = "Lista składników")]
         public virtual List<Ingredient> Ingredients { get; set; }
@@ -43,5 +43,6 @@ namespace Portal_Kulinarny.Models
         public virtual List<Comment> Comments { get; set; }
 
         public string Votes { get; set; }
+
     }
 }

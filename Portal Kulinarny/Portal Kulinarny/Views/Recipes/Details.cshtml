@@ -35,11 +35,6 @@
 </div>
 
 <br />
-@*<div class="VoteSystem">
-    <div class="td0">Oceń potrawę</div>
-    <div id="Now" class="td">@Html.Partial("VoteNow", Model.RecipeId.ToString(CultureInfo.InvariantCulture))</div>
-    <div id="Show" class="td">@Html.Partial("VoteShow", Model.Votes, new ViewDataDictionary { { "id", Model.RecipeId } })</div>
-</div>*@
 
 <br />
 
@@ -56,8 +51,7 @@
 </p>
 
 @section Scripts {
-
-    @Scripts.Render("~/Scripts/AplikacjaKulinarna/AddVote.js")    
+    @Scripts.Render("~/Scripts/AplikacjaKulinarna/AddVote.js")
     @Scripts.Render("~/Scripts/AplikacjaKulinarna/AjaxComments.js")
     @Scripts.Render("~/bundles/jqueryval")
 }

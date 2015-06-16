@@ -326,7 +326,6 @@
     <Content Include="Views\Shared\CommentsList.cshtml" />
     <Content Include="Views\Shared\Comments.cshtml" />
     <Content Include="Views\Shared\VoteNow.cshtml" />
-    <Content Include="Views\Shared\VoteShow.cshtml" />
     <Content Include="Views\Shared\SearchPartial.cshtml" />
     <Content Include="Views\Recipes\RecipeList.cshtml" />
   </ItemGroup>

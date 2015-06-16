@@ -53,7 +53,7 @@
         </td>
         <td>
             @Html.ActionLink("Szczegóły", "Details", new { id = item.RecipeId }) 
-            @if (item.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins") || User.IsInRole("Editors"))
+            @if (item.AuthorName == HttpContext.Current.User.Identity.Name || User.IsInRole("Admins"))
             {
                 <span>|</span> @Html.ActionLink("Edytuj", "Edit", new { id = item.RecipeId }) <span>|</span>
                 @Html.ActionLink("Usuń", "Delete", new { id = item.RecipeId })

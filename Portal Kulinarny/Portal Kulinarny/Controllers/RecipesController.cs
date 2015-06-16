@@ -16,7 +16,7 @@ using System.Globalization;
 
 namespace Portal_Kulinarny.Controllers
 {
-    
+
     public class RecipesController : Controller
     {
         private RecipeContext db = new RecipeContext();
@@ -82,36 +82,36 @@ namespace Portal_Kulinarny.Controllers
             return View(recipe);
         }
 
-        // GET: Recipes/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Recipe recipe = db.Recipes.Find(id);
-            if (recipe == null)
-            {
-                return HttpNotFound();
-            }
-            return View(recipe);
-        }
+        //// GET: Recipes/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Recipe recipe = db.Recipes.Find(id);
+        //    if (recipe == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(recipe);
+        //}
 
-        // POST: Recipes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Edit( Recipe recipe)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(recipe).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(recipe);
-        }
+        //// POST: Recipes/Edit/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        ////[ValidateAntiForgeryToken]
+        //public ActionResult Edit( Recipe recipe)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(recipe).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(recipe);
+        //}
 
         // GET: Recipes/Delete/5
         public ActionResult Delete(int? id)
@@ -195,13 +195,13 @@ namespace Portal_Kulinarny.Controllers
 
         public ActionResult Search(string search)
         {
-             var recipes =
-                db.Recipes.Where(
-                    a =>
-                        a.Title.ToLower().Contains(search.ToLower()) ||
-                        a.PreparationTime.ToString().Equals(search.ToString()) ||
-                        a.Ingredients.Any(
-                            ingred => ingred.IngredientName.ToLower().Contains(search.ToLower()))).ToList();
+            var recipes =
+               db.Recipes.Where(
+                   a =>
+                       a.Title.ToLower().Contains(search.ToLower()) ||
+                       a.PreparationTime.ToString().Equals(search.ToString()) ||
+                       a.Ingredients.Any(
+                           ingred => ingred.IngredientName.ToLower().Contains(search.ToLower()))).ToList();
 
             return View(recipes);
         }
@@ -392,72 +392,105 @@ namespace Portal_Kulinarny.Controllers
             return "minuta";
         }
 
-        public string CountVotes(string votesString, string id)
+        private void DeleteImg(string relativePath)
         {
-            var idNum = Convert.ToInt32(id);
-            var recipe = db.Recipes.Find(idNum);
-
-            Single mTotalNumberOfVotes = 0;
-            Single mTotalVoteCount = 0;
-
-            string[] votes = votesString.Split(',');
-            for (int i = 0; i < votes.Length; i++)
+            if (relativePath != "~/Images/Default/No_Photo.jpg")
             {
-                Single mCurrentVotesCount = int.Parse(votes[i]);
-                mTotalNumberOfVotes = mTotalNumberOfVotes + mCurrentVotesCount;
-                mTotalVoteCount = mTotalVoteCount + (mCurrentVotesCount * (i + 1));
+                var path = Server.MapPath(relativePath);
+                System.IO.File.Delete(path);
             }
-
-            float mAverage = mTotalVoteCount / mTotalNumberOfVotes;
-            float mInPercent = (mAverage * 100) / 5;
-
-            recipe.AverageGrade = mAverage;
-            db.SaveChanges();
-
-            return
-                "<span style=\"display: block; width: 70px; height: 13px; background: url(/Images/Default/Disactive_Star.gif) 0 0;\">" +
-                "<span style=\"display: block; width: " + mInPercent +
-                "%; height: 13px; background: url(/Images/Default/Active_Star.gif) 0 -13px;\"></span> " +
-                "</span>" +
-                "<span class=\"smallText\">Ilość głosów: <span itemprop=\"ratingCount\">" + mTotalNumberOfVotes +
-                "</span> | Średnia ocen : <span itemprop=\"ratingValue\">" + mAverage.ToString("##.##") +
-                "</span> na 5 </span>  ";
         }
 
-        public JsonResult CountVotesFromId(string id)
+        [HttpGet]
+        public ActionResult Edit(int? id)
         {
-            var idNum = Convert.ToInt32(id);
-            var recipe = db.Recipes.Find(idNum);
-            var votesString = recipe.Votes;
-            Single mTotalNumberOfVotes = 0;
-            Single mTotalVoteCount = 0;
-
-     
-            string[] votes = votesString.Split(',');
-            for (int i = 0; i < votes.Length; i++)
+            if (id == null)
             {
-                Single mCurrentVotesCount = int.Parse(votes[i]);
-                mTotalNumberOfVotes = mTotalNumberOfVotes + mCurrentVotesCount;
-                mTotalVoteCount = mTotalVoteCount + (mCurrentVotesCount * (i + 1));
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            float mAverage = mTotalVoteCount / mTotalNumberOfVotes;
-            float mInPercent = (mAverage * 100) / 5;
+            var recipe = db.Recipes.Find(id);
 
-            recipe.AverageGrade = mAverage;
-            db.SaveChanges();
+            var vm = new RecipeEditViewModels
+            {
+                RecipeId = recipe.RecipeId,
+                Image = recipe.Image,
+                Ingredients = recipe.Ingredients,
+                Title = recipe.Title,
+                PreparationTime = recipe.PreparationTime,
+                Content = recipe.Content,
+                AverageGrade = recipe.AverageGrade
+            };
 
-            return
-                Json(
-                    "<span style=\"display: block; width: 70px; height: 13px; background: url(/Images/Default/DisactiveStar.gif) 0 0;\">" +
-                    "<span style=\"display: block; width: " + mInPercent +
-                    "%; height: 13px; background: url(/Images/Default/ActiveStar.gif) 0 -13px;\"></span> " +
-                    "</span>" +
-                    "<span class=\"smallText\">Ilość głosów: <span itemprop=\"ratingCount\">" + mTotalNumberOfVotes +
-                    "</span> | Średnia ocen : <span itemprop=\"ratingValue\">" + mAverage.ToString("##.##") +
-                    "</span> na 5 </span>  ");
-
+            return View(vm);
         }
 
-    }
+        [HttpPost]
+        public ActionResult Edit(RecipeEditViewModels recipe, HttpPostedFileBase file)
+        {
+            if (!ModelState.IsValid) return RedirectToAction("Details", new { id = recipe.RecipeId });
+
+            var dbPost = db.Recipes.FirstOrDefault(p => p.RecipeId == recipe.RecipeId);
+            if (dbPost == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            if (dbPost.Ingredients.Count != recipe.Ingredients.Count ||
+                dbPost.Ingredients.Distinct().Count() != recipe.Ingredients.Count
+                || !(dbPost.Ingredients.All(item => recipe.Ingredients.Contains(item))))
+            {
+                db.Ingredients.RemoveRange(dbPost.Ingredients);
+                dbPost.Ingredients = new List<Ingredient>(recipe.Ingredients);
+            }
+
+            dbPost.Title = recipe.Title;
+            dbPost.PreparationTime = recipe.PreparationTime;
+            dbPost.Content = recipe.Content;
+            dbPost.AverageGrade = recipe.AverageGrade;
+
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var uniqueFileName = Guid.NewGuid() + fileName;
+                var absolutePath = Path.Combine(Server.MapPath("~/Images/Uploaded"), uniqueFileName);
+                var relativePath = "~/Images/Uploaded/" + uniqueFileName;
+                file.SaveAs(absolutePath);
+                dbPost.Image = relativePath;
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = recipe.RecipeId });
+        }
+
+
+        public ActionResult DeleteImage(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var toDelete = db.Recipes.Find(id);
+
+            if (toDelete == null) return RedirectToAction("Index");
+
+            DeleteImg(toDelete.Image);
+            toDelete.Image = "~/Images/Default/No_Photo.jpg";
+            db.SaveChanges();
+
+            var vm = new RecipeEditViewModels
+            {
+                RecipeId = toDelete.RecipeId,
+                Image = toDelete.Image,
+                Ingredients = toDelete.Ingredients,
+                Title = toDelete.Title,
+                PreparationTime = toDelete.PreparationTime,
+                Content = toDelete.Content
+            };
+            return RedirectToAction("Edit", vm);
+        }
+    }           
 }

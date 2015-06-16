@@ -1,9 +1,10 @@
-﻿@model Portal_Kulinarny.Models.Recipe
+﻿@using Portal_Kulinarny.Models.Constants
+@model Portal_Kulinarny.Models.ViewModels.RecipeEditViewModels
 
 <br />
 <h1 class="title">Edycja przepisu</h1>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -28,18 +29,11 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
-        @*<div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(model => model.Image)
         </div>
-        @if (Model.Image == ConstantStrings.DefaultRecipePhoto)
+        @if (Model.Image == "~/Images/Default/No_Photo.jpg")
         {
             <input type="file" name="file" accept="image/jpeg,image/png">
             <br>
@@ -48,7 +42,27 @@
         {<img src="@Url.Content(Model.Image)" alt="image" width="150" height="150" />
             @Html.ActionLink("Usuń bieżące zdjęcie", "DeleteImage", new { id = Model.RecipeId })
             <br><br>
-        }*@
+        }
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ingredients)
+        </div>
+        <br>
+        <span id="validationJS" class="text-danger"></span>
+        <ul id="IngredientEditor" style="list-style-type: none">
+            @if (Model.Ingredients != null)
+            {
+                foreach (var ingre in Model.Ingredients)
+                {
+                    Html.RenderPartial("IngredientEditor", ingre, new ViewDataDictionary { { "UnitNames", Model.UnitNameList } });
+                }
+            }
+        </ul>
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-2">
+                <button id="AddIngredient" class="btn btn-default">Dodaj składnik</button>
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -58,6 +72,7 @@
             </div>
         </div>
 
+
         <div class="form-group">
             @Html.LabelFor(model => model.AverageGrade, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -66,18 +81,21 @@
             </div>
         </div>
 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Zapisz" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Wróć do listy", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/AplikacjaKulinarna/AddNewIngredient.js")
+    @Scripts.Render("~/Scripts/AplikacjaKulinarna/CheckIngredient.js")
 }
